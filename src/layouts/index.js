@@ -1,12 +1,18 @@
-import styles from './index.css';
+import React from 'react'
+import { connect } from 'dva'
+import { userLayoutConfig } from '@/config'
+import UserLayout from './UserLayout'
+import BasicLayout from './BasicLayout'
 
-function BasicLayout(props) {
-  return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      { props.children }
-    </div>
-  );
+function Layout(props) {
+
+  const { pathname } = props.location
+
+  if (userLayoutConfig && userLayoutConfig.includes(pathname)) {
+    return <UserLayout {...props} />;
+  }
+
+  return <BasicLayout {...props} />
 }
 
-export default BasicLayout;
+export default connect()(Layout)
