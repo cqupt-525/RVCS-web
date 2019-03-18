@@ -8,7 +8,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: false,
-      title: 'RVCS-web',
+      title: 'RVCS',
       dll: false,
       
       routes: {
