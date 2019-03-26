@@ -1,14 +1,34 @@
 import React from 'react'
-import { connect } from 'dva'
-import styles from './BasicLayout.less'
+import { Icon } from 'antd'
+import { GlobalFooter } from 'ant-design-pro'
+import styles from './basicLayout.less'
 
-function BasicLayout(props) {
+const links = [{
+  key: 'umi',
+  title: 'umi',
+  href: 'https://umijs.org/zh/',
+  blankTarget: true,
+}, {
+  key: 'github',
+  title: <Icon type='github' />,
+  href: 'https://github.com/cqupt-525',
+  blankTarget: true,
+}, {
+  key: 'dva',
+  title: 'dva',
+  href: 'https://dvajs.com/',
+  blankTarget: true,
+}]
+
+const copyright = <><Icon type='copyright' /> 第二组毕业实习项目 — 基于React/Umi/Dva/antd的web app</>
+
+export default function (props) {
   return (
-    <div>
-      <div>BasicLayout</div>
-      {props.children}
+    <div className={styles['container']}>
+      <div className={styles['content']}>
+        {props.children}
+      </div>
+      <GlobalFooter links={links} copyright={copyright} />
     </div>
   )
 }
-
-export default connect()(BasicLayout)
